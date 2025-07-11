@@ -11,14 +11,11 @@ await seed(db, schema ).refine(f => {
         name: f.companyName(),
         description: f.loremIpsum(),
       },
-      with: {
-        questions: 5,
-      }
-    }
+    },
+    questions: {
+        count: 5,
+    },
   }
 });
 
 await sql.end()
-
-// biome-ignore lint/suspicious/noConsole: only use in dev
-console.log("Database seeded")
